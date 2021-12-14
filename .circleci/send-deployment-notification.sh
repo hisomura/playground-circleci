@@ -16,7 +16,7 @@ function send_notification_to_slack() {
     -H "Content-Type: application/json" \
     -d @- <<EOS
 {
-  "text": "$1",
+  "text": $1,
   "icon_emoji": ":circle_ci_success:",
   "username": "CircleCI"
 }
@@ -25,7 +25,6 @@ EOS
 }
 
 ### Main part
-### Main part
 if [ $CIRCLE_BRANCH == 'main' ]; then
   member_id=$(echo "$MEMBERS_MAP_JSON" | jq -r ."$CIRCLE_USERNAME")
   if [ "$member_id" != 'null' ]; then
@@ -33,4 +32,5 @@ if [ $CIRCLE_BRANCH == 'main' ]; then
   fi
 
   send_notification_to_slack "$mention develop環境にデプロイしました。 ビルド詳細: ${CIRCLE_BUILD_URL} プルリクエストURL: ${CIRCLE_PULL_REQUEST}"
+  echo $?
 fi

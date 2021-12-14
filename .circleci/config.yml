@@ -17,7 +17,7 @@ jobs:
       - checkout
       - run:
           name: "notification"
-          command: /bin/bash .circleci/send-deployment-notification.sh
+          command: bash .circleci/send-deployment-notification.sh
 
 # Invoke jobs via workflows
 # See: https://circleci.com/docs/2.0/configuration-reference/#workflows

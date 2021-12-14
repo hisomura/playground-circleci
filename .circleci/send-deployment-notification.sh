@@ -28,8 +28,11 @@ declare -A MEMBERS_MAP=(
 )
 
 ### Main part
-mention_str=''
-if [ ${MEMBERS_MAP[$CIRCLE_USERNAME]} ]; then
-  mention_str="<@${MEMBERS_MAP[$CIRCLE_USERNAME]}>"
+member_id=$(echo $MEMBERS_MAP_JSON | jq ."$CIRCLE_USERNAME")
+echo member_id
+
+mention=''
+if [ $member_id ]; then
+  mention="<@${member_id}>"
 fi
-send_notification_to_slack "$mention_str test"
+send_notification_to_slack "$mention test"

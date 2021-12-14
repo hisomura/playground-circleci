@@ -8,8 +8,6 @@
 #   0 if thing goes well, non-zero on error.
 #######################################
 function send_notification_to_slack() {
-  echo $SLACK_WEBHOOK_URL
-  echo $1
   ## https://swfz.hatenablog.com/entry/2019/07/07/035341
   curl -X POST ${SLACK_WEBHOOK_URL} \
     -H "Content-Type: application/json" \
@@ -28,8 +26,8 @@ declare -A MEMBERS_MAP=(
 )
 
 ### Main part
-member_id=$(echo $MEMBERS_MAP_JSON | jq ."$CIRCLE_USERNAME")
-echo member_id
+member_id=$(echo $MEMBERS_MAP_JSON | jq -r ."$CIRCLE_USERNAME")
+echo $member_id
 
 mention=''
 if [ $member_id ]; then

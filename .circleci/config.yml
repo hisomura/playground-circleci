@@ -19,6 +19,9 @@ jobs:
           name: "ls -al"
           command: ls -al
       - run:
+          name: "cat"
+          command: cat .circleci/send-deployment-notification.sh
+      - run:
           name: "notification"
           command: bash .circleci/send-deployment-notification.sh
 

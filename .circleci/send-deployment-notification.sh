@@ -30,7 +30,7 @@ member_id=$(echo $MEMBERS_MAP_JSON | jq -r ."$CIRCLE_USERNAME")
 echo $member_id
 
 mention=''
-if [ $member_id ]; then
+if [ $member_id != 'null' ]; then
   mention="<@${member_id}>"
 fi
 send_notification_to_slack "$mention test"

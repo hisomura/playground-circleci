@@ -28,10 +28,8 @@ declare -A MEMBERS_MAP=(
 )
 
 ### Main part
-if [ $CIRCLE_BRANCH == 'develop' ]; then
-  mention_str=''
-  if [ ${MEMBERS_MAP[$CIRCLE_USERNAME]} ]; then
-    mention_str="<@${MEMBERS_MAP[$CIRCLE_USERNAME]}>"
-  fi
-  send_notification_to_slack "$mention_str test"
+mention_str=''
+if [ ${MEMBERS_MAP[$CIRCLE_USERNAME]} ]; then
+  mention_str="<@${MEMBERS_MAP[$CIRCLE_USERNAME]}>"
 fi
+send_notification_to_slack "$mention_str test"

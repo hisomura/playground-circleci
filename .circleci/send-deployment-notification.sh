@@ -12,7 +12,7 @@
 function send_notification_to_slack() {
   echo "text: $1"
   ## https://swfz.hatenablog.com/entry/2019/07/07/035341
-  curl --fail-with-body -X POST "$SLACK_WEBHOOK_URL" \
+  curl -X POST "$SLACK_WEBHOOK_URL" \
     -H "Content-Type: application/json" \
     -d @- <<EOS
 {

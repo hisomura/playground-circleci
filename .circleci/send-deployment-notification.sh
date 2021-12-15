@@ -31,6 +31,6 @@ if [ $CIRCLE_BRANCH == 'main' ]; then
     mention="<@${member_id}>"
   fi
 
-  send_notification_to_slack "$mention develop環境にデプロイしました。 ビルド詳細: ${CIRCLE_BUILD_URL} プルリクエストURL: ${CIRCLE_PULL_REQUEST}"
+  send_notification_to_slack "$mention test"
   echo $?
 fi

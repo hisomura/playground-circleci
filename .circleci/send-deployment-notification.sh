@@ -16,12 +16,11 @@ function send_notification_to_slack() {
     -H "Content-Type: application/json" \
     -d @- <<EOS
 {
-  "text": $1,
+  "text": "$1",
   "icon_emoji": ":circle_ci_success:",
   "username": "CircleCI"
 }
 EOS
-  return $?
 }
 
 ### Main part

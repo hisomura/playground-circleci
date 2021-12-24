@@ -26,7 +26,7 @@ EOS
 
 ### Main part
 if [ $CIRCLE_BRANCH == 'main' ]; then
-  member_id=$(echo "$MEMBERS_MAP_JSON" | jq -r ."$CIRCLE_USERNAME")
+  member_id=$(echo "$MEMBERS_MAP_JSON" | jq -r '.["'"$CIRCLE_USERNAME"'"]')
   if [ "$member_id" != 'null' ]; then
     mention="<@${member_id}>"
   fi
